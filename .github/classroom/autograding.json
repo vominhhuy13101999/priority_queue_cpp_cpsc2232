@@ -1,0 +1,54 @@
+{
+  "tests": [
+    {
+      "name": "Test size",
+      "setup": "make",
+      "run": "./PriorityQueueTest.exe size",
+      "input": "",
+      "output": "0\r\n1",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "Test isEmpty",
+      "setup": "make",
+      "run": "./PriorityQueueTest.exe isempty",
+      "input": "",
+      "output": "1\r\n0",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "Test all",
+      "setup": "make",
+      "run": "./PriorityQueueTest.exe all",
+      "input": "",
+      "output": "0\r\n1\r\n7\r\n0\r\nSome string 7",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "Test min",
+      "setup": "make",
+      "run": "./PriorityQueueTest.exe min",
+      "input": "",
+      "output": "2\r\na\r\n2",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "Test removeMin",
+      "setup": "make",
+      "run": "./PriorityQueueTest.exe removemin",
+      "input": "",
+      "output": "a\r\n1",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    }
+  ]
+}
