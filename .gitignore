@@ -1,0 +1,7 @@
+*.o
+*.exe
+.project
+.classpath
+.cproject
+.settings/*
+.externalToolBuilders/*
