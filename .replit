@@ -1,0 +1,2 @@
+language = "cpp"
+run = "make; ./PriorityQueueTest.exe isempty size all size min removemin"
