@@ -10,8 +10,9 @@ using namespace std;
 #include "ConcreteEntry.h"
 #include "Comparator.h"
 #include "PriorityQueueImpl.h"
-
-void getAndPrintMinimum(PriorityQueueImpl queue) {
+#include "Node.h"
+void getAndPrintMinimum(PriorityQueueImpl queue)
+{
 	ConcreteEntry minimum = queue.removeMin();
 	string minimumKey = minimum.getKey();
 	string minimumValue = minimum.getValue();
@@ -24,7 +25,8 @@ ConcreteEntry makeEntry(string key, string value)
 	return ConcreteEntry(key, value);
 }
 
-void testAllFunctions(PriorityQueueImpl queue) {
+void testAllFunctions(PriorityQueueImpl queue)
+{
 	cout << queue.size() << endl;
 	cout << queue.isEmpty() << endl;
 
@@ -52,19 +54,24 @@ void testAllFunctions(PriorityQueueImpl queue) {
 	getAndPrintMinimum(queue);
 }
 
-void testSize(PriorityQueueImpl queue) {
+void testSize(PriorityQueueImpl queue)
+{
 	cout << queue.size() << endl;
+	cout << "---------------------" << endl;
 	queue.insert(makeEntry("a", "a"));
+	cout << "---------------------" << endl;
 	cout << queue.size() << endl;
 }
 
-void testIsEmpty(PriorityQueueImpl queue) {
+void testIsEmpty(PriorityQueueImpl queue)
+{
 	cout << queue.isEmpty() << endl;
 	queue.insert(makeEntry("a", "a"));
 	cout << queue.isEmpty() << endl;
 }
 
-void testMin(PriorityQueueImpl queue) {
+void testMin(PriorityQueueImpl queue)
+{
 	queue.insert(makeEntry("a", "a"));
 	queue.insert(makeEntry("b", "b"));
 	cout << queue.size() << endl;
@@ -72,41 +79,72 @@ void testMin(PriorityQueueImpl queue) {
 	cout << queue.size() << endl;
 }
 
-void testRemoveMin(PriorityQueueImpl queue) {
+void testRemoveMin(PriorityQueueImpl queue)
+{
 	queue.insert(makeEntry("a", "a"));
 	queue.insert(makeEntry("b", "b"));
 	cout << queue.removeMin().getKey() << endl;
 	cout << queue.size() << endl;
 }
 
-void testInvalidKey(PriorityQueueImpl queue) {
-	try {
+void testInvalidKey(PriorityQueueImpl queue)
+{
+	try
+	{
 		queue.insert(makeEntry(NULL, NULL));
-	} catch (exception &exception) {
+	}
+	catch (exception &exception)
+	{
 		cout << "Caught the right exception!" << endl;
 	}
 }
 
-int main(int argc, char* args[]) {
+int main(int argc, char *args[])
+{
 	PriorityQueueImpl queue;
-
+	// cout<< argc<<endl;
+	// string argument(args[0]);
+	// cout<<"argument:"<<argument.compare("all") <<endl;
 	try
 	{
 		for (int i = 0; i < argc; ++i)
 		{
 			string argument(args[i]);
-			if (argument.compare("all") == 0)
+			cout<<argument<<endl;
+			cout<<argument.compare("min")<<endl;
+			if (argument.compare("all") ==0)
 			{
+				cout<<"test all"<<endl;
+
 				testAllFunctions(queue);
-			} else if (argument.compare("size")) {
+			}
+			else if (argument.compare("size")==0)
+			{
+				cout<<"test size"<<endl;
 				testSize(queue);
-			} else if (argument.compare("isempty")) {
+			}
+			else if (argument.compare("isempty")==0)
+			{
+				cout<<"test isempty"<<endl;
+
 				testIsEmpty(queue);
-			} else if (argument.compare("min")) {
+			}
+			else if (argument.compare("min")==0)
+			{
+				cout<<"test min"<<endl;
+
 				testMin(queue);
-			} else if (argument.compare("removemin")) {
+			}
+			else if (argument.compare("removemin")==0)
+			{
+				cout<<"test removemin"<<endl;
+
 				testRemoveMin(queue);
-			} else {
+			}
+			else
+			{
+				cout<<"test invalidkey"<<endl;
+
 				testInvalidKey(queue);
 			}
 		}
@@ -115,4 +153,9 @@ int main(int argc, char* args[]) {
 	{
 		cerr << "ERROR:" << exception.what() << endl;
 	}
+	// catch (const std::exception &exc)
+	// {
+	// 	// catch anything thrown within try block that derives from std::exception
+	// 	std::cerr << exc.what();
+	// }
 }

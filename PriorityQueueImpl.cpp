@@ -1,34 +1,80 @@
 #include "PriorityQueue.h"
 #include "PriorityQueueImpl.h"
 #include "MethodMustBeImplemented.h"
-
+#include "Node.h"
+#include <iostream>
+using namespace std;
 
 int PriorityQueueImpl::size() const
 {
-	MethodMustBeImplemented MustImplement;
-	throw MustImplement;
+	return len;
 }
 
 bool PriorityQueueImpl::isEmpty() const
 {
-	MethodMustBeImplemented MustImplement;
-	throw MustImplement;
+	
+	return len==0;
 }
 
 void PriorityQueueImpl::insert(const ConcreteEntry& e)
 {
-	MethodMustBeImplemented MustImplement;
-	throw MustImplement;
+	ConcreteEntry* e1=new ConcreteEntry(e.getKey(), e.getValue()); 
+	if (len == 0) {
+		head= new Node();
+		//cout<<"----------------"<<endl;
+		head->entry = e1;
+		//cout<<"----------------"<<endl;
+
+		// tail=head;
+	}
+	else if(C.compare(e1,head->entry)){
+		Node* n= new Node();
+		n->entry= e1;
+		n->next=head;
+		head=n;
+
+		
+
+	}
+	else{
+		Node* n=head;
+		for (int i=0;i<len; i++){
+			if (C.compare(e1,n->next->entry)){
+				Node* n1= new Node();
+				n1->entry= e1;
+				n1->next=n->next;
+				n->next=n1;
+
+		
+
+	}
+		}
+	}
+	len++;
 }
 
 const ConcreteEntry& PriorityQueueImpl::min() const throw(QueueEmpty)
 {
-	MethodMustBeImplemented MustImplement;
-	throw MustImplement;
+	if (len==0){
+		QueueEmpty QE;
+		throw QE ;
+	}
+	else{
+		return (*head->entry);
+	}
+
 }
 
 ConcreteEntry& PriorityQueueImpl::removeMin() throw(QueueEmpty)
 {
-	MethodMustBeImplemented MustImplement;
-	throw MustImplement;
+	if (len==0){
+		QueueEmpty QE;
+		throw QE ;
+	}
+	else{
+		ConcreteEntry& a = (*head->entry);
+		head=head->next;
+		len--;
+		return  a;
+	}
 }
