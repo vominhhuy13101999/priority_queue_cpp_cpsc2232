@@ -57,9 +57,9 @@ void testAllFunctions(PriorityQueueImpl queue)
 void testSize(PriorityQueueImpl queue)
 {
 	cout << queue.size() << endl;
-	cout << "---------------------" << endl;
+	// cout << "---------------------" << endl;
 	queue.insert(makeEntry("a", "a"));
-	cout << "---------------------" << endl;
+	// cout << "---------------------" << endl;
 	cout << queue.size() << endl;
 }
 
@@ -72,8 +72,14 @@ void testIsEmpty(PriorityQueueImpl queue)
 
 void testMin(PriorityQueueImpl queue)
 {
+	// cout << "---------------------" << endl;
+
 	queue.insert(makeEntry("a", "a"));
+	// cout << "---------------------" << endl;
+
 	queue.insert(makeEntry("b", "b"));
+	// cout << "---------------------" << endl;
+
 	cout << queue.size() << endl;
 	cout << queue.min().getKey() << endl;
 	cout << queue.size() << endl;
@@ -110,8 +116,7 @@ int main(int argc, char *args[])
 		for (int i = 0; i < argc; ++i)
 		{
 			string argument(args[i]);
-			cout<<argument<<endl;
-			cout<<argument.compare("min")<<endl;
+
 			if (argument.compare("all") ==0)
 			{
 				cout<<"test all"<<endl;

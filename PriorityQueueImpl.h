@@ -13,7 +13,7 @@ private:
     // linked list of ConcreteEntry
     int len = 0;
     Node* head;
-    Comparator C;
+    Comparator* C;
     // Node* tail;
     // std::vector<ConcreteEntry> v;
 public:

@@ -3,6 +3,7 @@
 #include "MethodMustBeImplemented.h"
 #include "Node.h"
 #include <iostream>
+#include "Comparator.h"
 using namespace std;
 
 int PriorityQueueImpl::size() const
@@ -21,13 +22,14 @@ void PriorityQueueImpl::insert(const ConcreteEntry& e)
 	ConcreteEntry* e1=new ConcreteEntry(e.getKey(), e.getValue()); 
 	if (len == 0) {
 		head= new Node();
+		C=new Comparator();
 		//cout<<"----------------"<<endl;
 		head->entry = e1;
 		//cout<<"----------------"<<endl;
 
 		// tail=head;
 	}
-	else if(C.compare(e1,head->entry)){
+	else if(C->compare(e1,head->entry)){
 		Node* n= new Node();
 		n->entry= e1;
 		n->next=head;
@@ -36,14 +38,30 @@ void PriorityQueueImpl::insert(const ConcreteEntry& e)
 		
 
 	}
+	else if(len==1){
+		Node* n= new Node();
+		n->entry= e1;
+		head->next=n;
+
+		
+
+	}
+
 	else{
+
+
+
+
 		Node* n=head;
 		for (int i=0;i<len; i++){
-			if (C.compare(e1,n->next->entry)){
+
+			if (C->compare(e1,n->next->entry)){
 				Node* n1= new Node();
 				n1->entry= e1;
 				n1->next=n->next;
 				n->next=n1;
+			n=n->next;
+
 
 		
 
