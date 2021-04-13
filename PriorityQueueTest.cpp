@@ -119,36 +119,36 @@ int main(int argc, char *args[])
 
 			if (argument.compare("all") ==0)
 			{
-				cout<<"test all"<<endl;
+				// cout<<"test all"<<endl;
 
 				testAllFunctions(queue);
 			}
 			else if (argument.compare("size")==0)
 			{
-				cout<<"test size"<<endl;
+				// cout<<"test size"<<endl;
 				testSize(queue);
 			}
 			else if (argument.compare("isempty")==0)
 			{
-				cout<<"test isempty"<<endl;
+				// cout<<"test isempty"<<endl;
 
 				testIsEmpty(queue);
 			}
 			else if (argument.compare("min")==0)
 			{
-				cout<<"test min"<<endl;
+				// cout<<"test min"<<endl;
 
 				testMin(queue);
 			}
 			else if (argument.compare("removemin")==0)
 			{
-				cout<<"test removemin"<<endl;
+				// cout<<"test removemin"<<endl;
 
 				testRemoveMin(queue);
 			}
 			else
 			{
-				cout<<"test invalidkey"<<endl;
+				// cout<<"test invalidkey"<<endl;
 
 				testInvalidKey(queue);
 			}
