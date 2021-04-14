@@ -30,7 +30,7 @@ void testAllFunctions(PriorityQueueImpl queue)
 	cout << queue.size() << endl;
 	cout << queue.isEmpty() << endl;
 
-	queue.insert(makeEntry("A", "Some string 1"));
+	queue.insert(makeEntry("A", "Some string 7"));
 	queue.insert(makeEntry("B", "Some string 2"));
 	queue.insert(makeEntry("C", "Some string 3"));
 	queue.insert(makeEntry("D", "Some string 4"));
