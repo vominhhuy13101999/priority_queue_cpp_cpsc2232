@@ -11,7 +11,7 @@ using namespace std;
 #include "Comparator.h"
 #include "PriorityQueueImpl.h"
 #include "Node.h"
-void getAndPrintMinimum(PriorityQueueImpl queue)
+void getAndPrintMinimum(PriorityQueueImpl& queue)
 {
 	ConcreteEntry minimum = queue.removeMin();
 	string minimumKey = minimum.getKey();
@@ -30,13 +30,16 @@ void testAllFunctions(PriorityQueueImpl queue)
 	cout << queue.size() << endl;
 	cout << queue.isEmpty() << endl;
 
-	queue.insert(makeEntry("A", "Some string 7"));
+
+
+	queue.insert(makeEntry("A", "Some string 1"));
 	queue.insert(makeEntry("B", "Some string 2"));
 	queue.insert(makeEntry("C", "Some string 3"));
 	queue.insert(makeEntry("D", "Some string 4"));
 	queue.insert(makeEntry("AA", "Some string 5"));
 	queue.insert(makeEntry("AAA", "Some string 6"));
 	queue.insert(makeEntry("aAA", "Some string 7"));
+
 
 	cout << queue.size() << endl;
 	cout << queue.isEmpty() << endl;
@@ -50,8 +53,12 @@ void testAllFunctions(PriorityQueueImpl queue)
 	getAndPrintMinimum(queue);
 	getAndPrintMinimum(queue);
 	getAndPrintMinimum(queue);
-	getAndPrintMinimum(queue);
-	getAndPrintMinimum(queue);
+	try {
+		getAndPrintMinimum(queue);
+	}
+	catch (QueueEmpty ex) {
+		cout << "Caught the right exception!" << endl;
+	}
 }
 
 void testSize(PriorityQueueImpl queue)
@@ -125,30 +132,30 @@ int main(int argc, char *args[])
 			}
 			else if (argument.compare("size")==0)
 			{
-				// cout<<"test size"<<endl;
+				cout<<"test size"<<endl;
 				testSize(queue);
 			}
 			else if (argument.compare("isempty")==0)
 			{
-				// cout<<"test isempty"<<endl;
+				cout<<"test isempty"<<endl;
 
 				testIsEmpty(queue);
 			}
 			else if (argument.compare("min")==0)
 			{
-				// cout<<"test min"<<endl;
+				cout<<"test min"<<endl;
 
 				testMin(queue);
 			}
 			else if (argument.compare("removemin")==0)
 			{
-				// cout<<"test removemin"<<endl;
+				cout<<"test removemin"<<endl;
 
 				testRemoveMin(queue);
 			}
 			else
 			{
-				// cout<<"test invalidkey"<<endl;
+				cout<<"test invalidkey"<<endl;
 
 				testInvalidKey(queue);
 			}

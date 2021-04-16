@@ -14,7 +14,7 @@ private:
     int len = 0;
     Node* head;
     Comparator* C;
-    // Node* tail;
+    Node* tail;
     // std::vector<ConcreteEntry> v;
 public:
     int size() const;
@@ -22,6 +22,7 @@ public:
     void insert(const ConcreteEntry& e);
 	const ConcreteEntry& min() const throw(QueueEmpty);
 	ConcreteEntry& removeMin() throw(QueueEmpty);
+    // void print() const;
 };
 
 #endif

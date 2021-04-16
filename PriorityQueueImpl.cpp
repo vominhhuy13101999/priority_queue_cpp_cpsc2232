@@ -27,13 +27,14 @@ void PriorityQueueImpl::insert(const ConcreteEntry& e)
 		head->entry = e1;
 		//cout<<"----------------"<<endl;
 
-		// tail=head;
+		tail=head;
 	}
 	else if(C->compare(e1,head->entry)){
 		Node* n= new Node();
 		n->entry= e1;
 		n->next=head;
 		head=n;
+		
 
 		
 
@@ -42,8 +43,16 @@ void PriorityQueueImpl::insert(const ConcreteEntry& e)
 		Node* n= new Node();
 		n->entry= e1;
 		head->next=n;
+		tail=n;
 
 		
+
+	}
+	else if (C->compare(tail->entry,e1)){
+		Node* n= new Node();
+		n->entry= e1;
+		tail->next=n;
+		tail=n;
 
 	}
 
@@ -53,19 +62,16 @@ void PriorityQueueImpl::insert(const ConcreteEntry& e)
 
 
 		Node* n=head;
-		for (int i=0;i<len; i++){
+		for (int i=0;i<len-1; i++){
 
 			if (C->compare(e1,n->next->entry)){
 				Node* n1= new Node();
 				n1->entry= e1;
 				n1->next=n->next;
 				n->next=n1;
-			n=n->next;
-
-
-		
-
+				break;
 	}
+		n=n->next;
 		}
 	}
 	len++;
@@ -85,7 +91,7 @@ const ConcreteEntry& PriorityQueueImpl::min() const throw(QueueEmpty)
 
 ConcreteEntry& PriorityQueueImpl::removeMin() throw(QueueEmpty)
 {
-	if (len==0){
+	if (len<1){
 		QueueEmpty QE;
 		throw QE ;
 	}
@@ -96,3 +102,14 @@ ConcreteEntry& PriorityQueueImpl::removeMin() throw(QueueEmpty)
 		return  a;
 	}
 }
+
+// void PriorityQueueImpl::print(){
+// 	if (len<1){
+// 		cout<<"nothing in the list"<<endl;
+// 	}
+// 	else{
+// 		Node* n=head;
+
+// 		for (int i=0; i< len)
+// 	}
+// }
